@@ -19,12 +19,12 @@
 </head>
 <body>
 
-<button onclick="document.querySelector('iframe').src += '&t=' + Date.now()">
+<button onclick="document.querySelector('iframe').src = document.querySelector('iframe').src.split('#')[0] + '&t=' + Date.now()">
   🔄 Aktualisieren
 </button>
 
 <iframe 
-  src="https://docs.google.com/spreadsheets/d/1PX17Wx4kj441HfxSD6hJCZw7ArEQtuC1EYuFs7AUibs/edit?gid=487880917"
+  src="https://docs.google.com/spreadsheets/d/1PX17Wx4kj441HfxSD6hJCZw7ArEQtuC1EYuFs7AUibs/edit?usp=sharing"
   allowfullscreen>
 </iframe>
 
