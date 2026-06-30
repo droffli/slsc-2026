@@ -5,31 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SLSC WM 2026 Spielplan – Live</title>
 <style>
-  body {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-  }
-  a.button {
-    display: inline-block;
-    padding: 12px 18px;
-    background: #007bff;
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-    font-size: 18px;
+  body { margin: 0; padding: 0; font-family: Arial, sans-serif; }
+  iframe { width: 100vw; height: 100vh; border: none; }
+  button {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 8px 12px;
+    font-size: 16px;
+    z-index: 9999;
   }
 </style>
 </head>
 <body>
 
-<h2>SLSC WM 2026 Spielplan – Live</h2>
+<button onclick="document.querySelector('iframe').src = document.querySelector('iframe').src.split('#')[0] + '&t=' + Date.now()">
+  🔄 Aktualisieren
+</button>
 
-<p>Tippe unten, um den Spielplan zu öffnen.  
-Auf dem Handy kannst du dann ganz normal rein- und rauszoomen.</p>
-
-<a class="button" href="https://docs.google.com/spreadsheets/d/1PX17Wx4kj441HfxSD6hJCZw7ArEQtuC1EYuFs7AUibs/edit?usp=sharing" target="_blank">
-  Spielplan öffnen
-</a>
+<iframe 
+  src="https://docs.google.com/spreadsheets/d/1PX17Wx4kj441HfxSD6hJCZw7ArEQtuC1EYuFs7AUibs/edit?usp=sharing"
+  allowfullscreen>
+</iframe>
 
 </body>
 </html>
