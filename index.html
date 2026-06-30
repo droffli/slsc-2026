@@ -15,6 +15,10 @@
   src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQhgLo_K9jkk3vmo6anuf5AXQq6K-V_BCSJDqGHdOXltmCzPi1ff7YFFKc7p5PumllVLvSYpCbKfadf/pubhtml?widget=true&headers=false"
   allowfullscreen>
 </iframe>
+  <button onclick="document.querySelector('iframe').src += '&t=' + Date.now()" 
+        style="position:fixed;top:10px;right:10px;padding:8px 12px;font-size:16px;">
+  🔄 Aktualisieren
+</button>
 
 <script>
 setInterval(() => {
