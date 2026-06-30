@@ -5,18 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SLSC WM 2026 Spielplan – Live</title>
 <style>
-  body { margin: 0; padding: 0; font-family: Arial, sans-serif; }
-  iframe { 
-    width: 100vw; 
-    height: 100vh; 
-    border: none;
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* verhindert Scrollbars */
   }
+
+  iframe { 
+    width: 98vw;   /* minimal kleiner → Browser kann rauszoomen */
+    height: 98vh;  /* minimal kleiner → Browser kann rauszoomen */
+    border: none;
+    display: block;
+  }
+
   .controls {
     position: fixed;
     top: 10px;
     right: 10px;
     z-index: 9999;
   }
+
   button {
     padding: 8px 12px;
     font-size: 16px;
