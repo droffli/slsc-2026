@@ -8,15 +8,17 @@
   html, body {
     margin: 0;
     padding: 0;
-    height: 100%;
-    overflow: hidden; /* verhindert Scrollbars */
   }
 
-  iframe { 
-    width: 98vw;   /* minimal kleiner → Browser kann rauszoomen */
-    height: 98vh;  /* minimal kleiner → Browser kann rauszoomen */
+  /* WICHTIG: iframe NICHT auf 100% setzen */
+  .iframe-wrapper {
+    padding: 10px;        /* gibt dem Browser Platz zum Rauszoomen */
+  }
+
+  iframe {
+    width: 100%;          /* relative Breite → Browser kann rauszoomen */
+    height: 80vh;         /* NICHT 100vh → sonst blockiert Google das Zoom */
     border: none;
-    display: block;
   }
 
   .controls {
@@ -38,11 +40,13 @@
   <button onclick="refresh()">🔄 Aktualisieren</button>
 </div>
 
-<iframe 
-  id="sheet"
-  src="https://docs.google.com/spreadsheets/d/1PX17Wx4kj441HfxSD6hJCZw7ArEQtuC1EYuFs7AUibs/edit?usp=sharing"
-  allowfullscreen>
-</iframe>
+<div class="iframe-wrapper">
+  <iframe 
+    id="sheet"
+    src="https://docs.google.com/spreadsheets/d/1PX17Wx4kj441HfxSD6hJCZw7ArEQtuC1EYuFs7AUibs/edit?usp=sharing"
+    allowfullscreen>
+  </iframe>
+</div>
 
 <script>
 function refresh() {
