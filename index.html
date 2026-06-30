@@ -6,27 +6,41 @@
 <title>SLSC WM 2026 Spielplan – Live</title>
 <style>
   body { margin: 0; padding: 0; font-family: Arial, sans-serif; }
-  iframe { width: 100vw; height: 100vh; border: none; }
-  button {
+  iframe { 
+    width: 100vw; 
+    height: 100vh; 
+    border: none;
+  }
+  .controls {
     position: fixed;
     top: 10px;
     right: 10px;
+    z-index: 9999;
+  }
+  button {
     padding: 8px 12px;
     font-size: 16px;
-    z-index: 9999;
   }
 </style>
 </head>
 <body>
 
-<button onclick="document.querySelector('iframe').src = document.querySelector('iframe').src.split('#')[0] + '&t=' + Date.now()">
-  🔄 Aktualisieren
-</button>
+<div class="controls">
+  <button onclick="refresh()">🔄 Aktualisieren</button>
+</div>
 
 <iframe 
+  id="sheet"
   src="https://docs.google.com/spreadsheets/d/1PX17Wx4kj441HfxSD6hJCZw7ArEQtuC1EYuFs7AUibs/edit?usp=sharing"
   allowfullscreen>
 </iframe>
+
+<script>
+function refresh() {
+  const iframe = document.getElementById("sheet");
+  iframe.src = iframe.src.split('#')[0] + "&t=" + Date.now();
+}
+</script>
 
 </body>
 </html>
