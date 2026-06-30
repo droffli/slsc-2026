@@ -5,28 +5,55 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SLSC WM 2026 Spielplan – Live</title>
 <style>
-  body { margin: 0; padding: 0; font-family: Arial, sans-serif; }
-  iframe { width: 100vw; height: 100vh; border: none; }
-  button {
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* WICHTIG: iframe NICHT auf 100% setzen */
+  .iframe-wrapper {
+    padding: 10px;        /* gibt dem Browser Platz zum Rauszoomen */
+  }
+
+  iframe {
+    width: 100%;          /* relative Breite → Browser kann rauszoomen */
+    height: 80vh;         /* NICHT 100vh → sonst blockiert Google das Zoom */
+    border: none;
+  }
+
+  .controls {
     position: fixed;
     top: 10px;
     right: 10px;
+    z-index: 9999;
+  }
+
+  button {
     padding: 8px 12px;
     font-size: 16px;
-    z-index: 9999;
   }
 </style>
 </head>
 <body>
 
-<button onclick="document.querySelector('iframe').src = document.querySelector('iframe').src.split('#')[0] + '&t=' + Date.now()">
-  🔄 Aktualisieren
-</button>
+<div class="controls">
+  <button onclick="refresh()">🔄 Aktualisieren</button>
+</div>
 
-<iframe 
-  src="https://docs.google.com/spreadsheets/d/1PX17Wx4kj441HfxSD6hJCZw7ArEQtuC1EYuFs7AUibs/edit?usp=sharing"
-  allowfullscreen>
-</iframe>
+<div class="iframe-wrapper">
+  <iframe 
+    id="sheet"
+    src="https://docs.google.com/spreadsheets/d/1PX17Wx4kj441HfxSD6hJCZw7ArEQtuC1EYuFs7AUibs/edit?usp=sharing"
+    allowfullscreen>
+  </iframe>
+</div>
+
+<script>
+function refresh() {
+  const iframe = document.getElementById("sheet");
+  iframe.src = iframe.src.split('#')[0] + "&t=" + Date.now();
+}
+</script>
 
 </body>
 </html>
